@@ -1,0 +1,62 @@
+<section class="hero py-16">
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="w-1/2">
+            <h6 class="text-2xl"><em>Hey!</em></h6>
+            <h1 class="text-xl md:text-4xl  font-bold">Welcome to the world of burgers!</h1>
+            <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary ">Order Now</button>
+        </div>
+        <div class="w-1/2 flex items-center justify-center">
+            <img src="img1/Burger1.png" alt="">
+        </div>
+    </div>
+</section>
+<section class="menu container mx-auto py-8">
+    <h1 class="text-5xl heading font-bold mb-8 text-center">Menu</h1>
+
+    
+    <!-- <div class="grid grid-cols-4 col-gap-12 row-gap-16"> -->
+        <div class="flex items-center flex-wrap justify-around gap-2  ">
+            
+            
+            <% Burgers.forEach(function(pizza){ %>
+               
+
+     
+
+
+           <div class=" w-full md:w-64  mb-3 max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+               <!-- <img class="h-40 mb-4 mx-auto" src="/img/<%= pizza.image %>" alt=""> -->
+               <div class="text-center">
+                   <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
+                   <span class="size py-1 px-4 rounded-full uppercase text-xs "><%= pizza.type %></span>
+                   <div class="flex items-center justify-around mt-6">
+                       <span class="font-bold text-lg">₹<%= pizza.price%></span>
+                       <button data-pizza = '<%= JSON.stringify(pizza) %>'' class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                           <span>+</span>
+                           <span class="ml-4">Add</span>
+                       </button>
+                   </div>
+               </div>
+           </div>
+           
+    <%   }) %>
+        
+    </div>
+</section>
+<section class="Reach-Us py-16  md:container mx-auto">
+    <h1 class="text-5xl heading font-bold mb-8 text-center">Reach us</h1>
+    <div class="flex  flex-col items-center md:flex-row gap-2">
+    <div class="md:w-1/2 hidden lg:block">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224686.91903773762!2d77.16664668992048!3d28.366917475733796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd0cce3e35a1%3A0x1eac071d1f816d37!2sThe%20Burger%20Nation!5e0!3m2!1sen!2sin!4v1656512012075!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="lg:hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224686.91903773762!2d77.16664668992048!3d28.366917475733796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd0cce3e35a1%3A0x1eac071d1f816d37!2sThe%20Burger%20Nation!5e0!3m2!1sen!2sin!4v1656512869805!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+    </div>
+    <div class="w-1/2">
+       <address>SCO-57,FIRST FLOOR, OMAXE WORLD STREET,GREATER FARIDABAD,HARYANA(121005)</address>  
+      
+    </div>
+</div>
+
+</section>
