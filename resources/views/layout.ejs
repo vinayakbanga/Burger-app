@@ -16,26 +16,26 @@
 
 <body >
     <nav class="container mx-auto flex items-center justify-between py-4">
-        <div>
-           <a href="/"> <img src="/img1/logo.png" alt="logo" class="md:w-1/2" ></a>
+        <div class="w-48">
+           <a href="/"> <img src="/img1/logo.png" alt="logo" class="w-full" ></a>
         </div>
         <div>
             <ul class="flex items-center">
-                <li class="ml-6"><a href="/">Menu</a></li>
-                <li class="ml-6"><a href="/customer/orders">Orders</a></li>
+                <li class="ml-4 text-sm md:text-lg"><a href="/">Menu</a></li>
+                <li class="ml-4 text-sm md:text-lg"><a href="/customer/orders">Orders</a></li>
                  
                 <% if(user){ %>
 
-                    <li class="ml-6">
+                    <li class="ml-4 text-sm md:text-lg">
                         <form id="logout" action="/logout" method="POST">
                         <a onclick="document.getElementById('logout').submit()" href="#">Logout</a></li>
                     </form>
-                    <li class="ml-6">Hi <%= user.name%> </li>
+                    <li class="ml-4 text-xs md:text-lg">Hi <%= user.name%> </li>
                 <% } else {%>
-                    <li class="ml-6"><a href="/register">Register</a></li>
-                    <li class="ml-6"><a href="/login">Login</a></li>
+                    <li class="ml-4 text-sm md:text-lg"><a href="/register">Register</a></li>
+                    <li class="ml-4 text-sm md:text-lg"><a href="/login">Login</a></li>
                 <% } %>
-                <li class="ml-6"><a href="/cart" class="flex items-center gap-1 px-4 py-2 rounded-full">
+                <li class="ml-4 text-sm md:text-lg"><a href="/cart" class="flex items-center gap-1 px-4 py-2 rounded-full">
                     <span id="cartCounter" class="text-white font-bold text-xs"><%= session.cart ? session.cart.totalQty: " " %></span>
                     <img src="/img/cart.png" alt="" class="w-full"></a></li>
             </ul>

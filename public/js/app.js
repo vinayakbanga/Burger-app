@@ -30827,7 +30827,7 @@ function updateCart(pizza) {
 
 addToCart.forEach(function (btn) {
   btn.addEventListener('click', function (e) {
-    var pizza = JSON.parse(btn.dataset.pizza);
+    var pizza = JSON.parse(btn.dataset.burger);
     updateCart(pizza); //   console.log(pizza);
   });
 }); // Remove alert message after X seconds
