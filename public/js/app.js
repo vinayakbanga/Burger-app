@@ -30799,9 +30799,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+ // import { emit } from '../../app/models/user'
 
 var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector('#cartCounter');
+var amount = document.querySelector('.amount');
 
 function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/update-cart', pizza).then(function (res) {
@@ -30836,8 +30838,39 @@ if (alertMsg) {
   setTimeout(function () {
     alertMsg.remove();
   }, 2000);
-} // change order statud
+}
 
+var slideAndFade = function slideAndFade(elem) {
+  elem.style.transform = "translate(100px)";
+  elem.style.opacity = "0";
+  setTimeout(function () {
+    elem.remove();
+  }, 2000);
+};
+
+var cancelCartItem = function cancelCartItem(e) {
+  var cancelBtn = e.currentTarget;
+  cancelBtn.removeEventListener('click', cancelCartItem);
+  cancelBtn.className = "cancel-item-icon-progress";
+  var burger = JSON.parse(e.currentTarget.dataset.burger);
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/remove-cart-item', {
+    burger: burger
+  }).then(function (res) {
+    var _res$data = res.data,
+        updatedQty = _res$data.updatedQty,
+        updatedTotalPrice = _res$data.updatedTotalPrice;
+    cancelBtn.className = "cancel-item-icon-success";
+    cartCounter.innerText = updatedQty;
+    amount.innerText = updatedTotalPrice;
+    slideAndFade(cancelBtn.parentElement);
+  });
+}; //cancel feature for cart items
+
+
+document.querySelectorAll('.cancel-item-icon').forEach(function (elem) {
+  elem.addEventListener('click', cancelCartItem);
+}); // Change order
+// change order statud
 
 var statuses = document.querySelectorAll('.status_line');
 var order = document.querySelector('#hiddenInput') ? document.querySelector('#hiddenInput').value : null;
@@ -31093,8 +31126,8 @@ function _initStripe() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\vinay\Desktop\2\realtime-pizza-ap\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\vinay\Desktop\2\realtime-pizza-ap\resources\scss\app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! C:\Users\vinay\Desktop\Burger\Burger\Burger-app\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\vinay\Desktop\Burger\Burger\Burger-app\resources\scss\app.scss */"./resources/scss/app.scss");
 
 
 /***/ })

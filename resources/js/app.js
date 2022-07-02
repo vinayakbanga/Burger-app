@@ -3,10 +3,11 @@ import Noty from 'noty'
 import {initAdmin} from './admin'
 import moment from 'moment'
 import {initStripe} from "./stripe"
+// import { emit } from '../../app/models/user'
 
 let addToCart =document.querySelectorAll('.add-to-cart')
 let cartCounter=document.querySelector('#cartCounter')
-
+let amount = document.querySelector('.amount')
 
 function updateCart(pizza){
 
@@ -51,6 +52,36 @@ if(alertMsg) {
         alertMsg.remove()
     }, 2000)
 }
+const slideAndFade =  elem => {
+  elem.style.transform = "translate(100px)";
+  elem.style.opacity = "0";
+  setTimeout(() => {
+      elem.remove();
+  }, 2000);
+}
+
+
+const cancelCartItem = e => {
+  let cancelBtn = e.currentTarget
+  cancelBtn.removeEventListener('click', cancelCartItem)
+  cancelBtn.className = "cancel-item-icon-progress"
+  let burger = JSON.parse(e.currentTarget.dataset.burger)
+  axios.post('/remove-cart-item', { burger }).then(res => {
+      let { updatedQty, updatedTotalPrice } = res.data;
+      cancelBtn.className = "cancel-item-icon-success"
+      cartCounter.innerText = updatedQty
+      amount.innerText = updatedTotalPrice
+      slideAndFade(cancelBtn.parentElement)
+  });
+}
+
+//cancel feature for cart items
+document.querySelectorAll('.cancel-item-icon').forEach(elem => {
+  elem.addEventListener('click', cancelCartItem)
+});
+
+
+// Change order
 
 
 

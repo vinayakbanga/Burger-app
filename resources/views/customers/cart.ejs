@@ -1,4 +1,4 @@
-<section class="cart py-16 h-screen">
+<section class="cart py-16 h-full">
 
     <% if(session.cart) { %>
         
@@ -8,19 +8,19 @@
             <h1 class="font-bold ml-4 text-2xl">Order summary</h1>
         </div>
         <div class="pizza-list">
-           <% for(let pizza of Object.values(session.cart.items)){ %>
+           <% for(let burger of Object.values(session.cart.items)){ %>
 <!-- <form action="/delete" method="POST"> -->
-            <div class="flex items-center my-8">
-                <!-- <img class="w-24" src="/img/<%= pizza.item.image %>" alt=""> -->
-                <div class="flex-1 ml-4">
-                    <h1><%= pizza.item.name %></h1>
-                    <span><%= pizza.item.size %></span>
-                    <!-- <h1><%= pizza.item._id %></h1> -->
+            <div class="flex  items-center justify-between my-8">
+                <!-- <img class="w-24" src="/img/<%= burger.item.image %>" alt=""> -->
+                <div class="flex flex-col ml-4">
+                    <h1><%= burger.item.name %></h1>
+                    <span class="text-gray-700 text-sm text-center "><%= burger.item.type %></span>
+                    <!-- <h1><%= burger.item._id %></h1> -->
                 </div>
-                <span class="flex-1"><%= pizza.qty %> pc</span>
-                <span class="font-bold text-lg">₹<%= pizza.item.price * pizza.qty  %></span>
-                <input type="hidden" name="item" value="<%= pizza.item.id %>">
-                <!-- <button class="btn" type="submit" name="delete" data-burger="<%=JSON.stringify(pizza)%>"> Delete</button> -->
+                <span class=""><%= burger.qty %> pc</span>
+                <span class="font-bold text-lg">₹<%= burger.item.price * burger.qty  %></span>
+                <input type="hidden" name="item" value="<%= burger.item.id %>">
+                <button class="cancel-item-icon ml-2 border border-red-500 p-1 text-xs rounded-lg hover:bg-red-500 hover:text-white"  data-burger="<%=JSON.stringify(burger)%>"> Remove</button>
             </div>
         <!-- </form> -->
         <%} %>

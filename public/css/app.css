@@ -321,20 +321,9 @@ nav li a:hover {
   color: #FE5F1E;
 }
 
-section.hero,.Reach-Us {
+section.hero {
   background: #F8F8F8;
 }
-
-.heading:after {
-  display: block;
-  height: 2px;
-  background-color: #e67e22;
-  content: " ";
-  width: 100px;
-  margin: 0 auto;
-  margin-top: 3px;
-}
-
 
 .size {
   background: #F8F8F8;
@@ -362,9 +351,7 @@ section.hero,.Reach-Us {
 }
 
 .btn-primary:hover {
-  background: #fff;
-  color: #FE5F1E;
-  border: solid #FE5F1E 2px;
+  background: #b23301;
 }
 
 section.cart {
@@ -546,6 +533,52 @@ section.status {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
-footer{
-  background-color: #2F2F2F;
+
+.cart-item {
+  border-bottom: 1px solid;
+  padding-bottom: 40px;
+  transition: transform 2s ease, opacity 2s ease;
 }
+
+.cancel-item-icon {
+  color: #e81919;
+}
+
+.cancel-item-icon-progress {
+  color: #e89f19;
+  -webkit-animation: shake 1.5s ease infinite;
+          animation: shake 1.5s ease infinite;
+}
+
+.cancel-item-icon-success {
+  color: #4BB543;
+}
+
+@-webkit-keyframes shake {
+  25% {
+    transform: rotate(40deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(-40deg);
+  }
+}
+
+@keyframes shake {
+  25% {
+    transform: rotate(40deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(-40deg);
+  }
+}
+
