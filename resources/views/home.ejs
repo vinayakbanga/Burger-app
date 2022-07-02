@@ -15,31 +15,63 @@
 
     
     <!-- <div class="grid grid-cols-4 col-gap-12 row-gap-16"> -->
-        <div class="flex items-center flex-wrap justify-around gap-2  ">
+        <div class="flex flex-col items-center flex-wrap justify-around gap-2  ">
             
-            
+            <h1 class=" text-2xl -md:text-5xl heading font-bold mb-8 text-center">Burger</h1>
             <% Burgers.forEach(function(burger){ %>
-               
+                
+                
+                <% if(burger.category === "burger") {%>
+                    
+                   
+                     <div class=" border border-orange-800  w-9/12 md:w-64 p-2  mb-3 max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                         
+                         <!-- <img class="h-40 mb-4 mx-auto" src="/img/<%= burger.image %>" alt=""> -->
+                         <div class="text-center">
+                             <h2 class="mb-4 text-lg"><%= burger.name %></h2>
+                             <span class="size py-1 px-4 rounded-full uppercase text-xs "><%= burger.type %></span>
+                             <div class="flex items-center justify-around mt-6">
+                                 <span class="font-bold text-lg">₹<%= burger.price%></span>
+                                 <button data-burger = '<%= JSON.stringify(burger) %>'' class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                                     <span>+</span>
+                                     <span class="ml-4">Add</span>
+                                 </button>
+                             </div>
+                         </div>
+                     </div>
+               <%  }%>
 
-     
 
-
-           <div class=" border border-orange-800  w-9/12 md:w-64 p-2  mb-3 max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-               <!-- <img class="h-40 mb-4 mx-auto" src="/img/<%= burger.image %>" alt=""> -->
-               <div class="text-center">
-                   <h2 class="mb-4 text-lg"><%= burger.name %></h2>
-                   <span class="size py-1 px-4 rounded-full uppercase text-xs "><%= burger.type %></span>
-                   <div class="flex items-center justify-around mt-6">
-                       <span class="font-bold text-lg">₹<%= burger.price%></span>
-                       <button data-burger = '<%= JSON.stringify(burger) %>'' class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                           <span>+</span>
-                           <span class="ml-4">Add</span>
-                       </button>
-                   </div>
-               </div>
-           </div>
            
     <%   }) %>
+    
+    <h1 class=" text-2xl -md:text-5xl heading font-bold mb-8 text-center">Shake</h1>
+    <% Burgers.forEach(function(burger){ %>
+        <% if(burger.category === "shake") {%>
+                
+                
+            
+           
+             <div class=" border border-orange-800  w-9/12 md:w-64 p-2  mb-3 max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                 
+                 <!-- <img class="h-40 mb-4 mx-auto" src="/img/<%= burger.image %>" alt=""> -->
+                 <div class="text-center">
+                     <h2 class="mb-4 text-lg"><%= burger.name %></h2>
+                     <span class="size py-1 px-4 rounded-full uppercase text-xs "><%= burger.type %></span>
+                     <div class="flex items-center justify-around mt-6">
+                         <span class="font-bold text-lg">₹<%= burger.price%></span>
+                         <button data-burger = '<%= JSON.stringify(burger) %>'' class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                             <span>+</span>
+                             <span class="ml-4">Add</span>
+                         </button>
+                     </div>
+                 </div>
+             </div>
+             
+             
+             
+             <%  }%>
+             <%   }) %>
         
     </div>
 </section>
