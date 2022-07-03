@@ -102,15 +102,17 @@ function orderController () {
             })
             order.save().then(result => {
                 Order.populate(result, { path: 'customerId' }, (err, placedOrder) => {
+                    console.log("hi");
                     // req.flash('success', 'Order placed successfully')
 
                     // Stripe payment
                     if(paymentType==='card') {
-                        stripe.charges.create({
+                        stripe.paymentIntents.create({
                             amount: req.session.cart.totalPrice  * 100,
-                            source: stripeToken,
+                            
                             currency: 'inr',
-                            description: `Pizza order: ${placedOrder._id}`
+                            description: `Pizza order: ${placedOrder._id}`,
+                            payment_method_types: [paymentType],
                         }).then(() => {
                             placedOrder.paymentStatus = true
                             placedOrder.paymentType = paymentType
