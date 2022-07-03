@@ -22,6 +22,7 @@ nav li a {
 }
 section.hero {
     background: $secondary;
+    height: 70vh;
 }
 .size {
     background: $secondary;
@@ -53,6 +54,14 @@ section.cart {
     .amount {
         color: $primary;
     }
+}
+section.Reach-Us{
+    // border: solid black 2px;
+    height: 80vh;
+}
+.map-lg{
+    // border: solid black 2px;
+    height: 50vh;
 }
 
 section.login {
