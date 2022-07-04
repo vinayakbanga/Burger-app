@@ -323,7 +323,6 @@ nav li a:hover {
 
 section.hero {
   background: #F8F8F8;
-  height: 70vh;
 }
 
 .size {
@@ -365,6 +364,7 @@ section.cart .amount {
 
 section.Reach-Us {
   height: 80vh;
+  background: #F8F8F8;
 }
 
 .map-lg {
