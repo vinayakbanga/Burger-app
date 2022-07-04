@@ -11,7 +11,7 @@
            <% for(let burger of Object.values(session.cart.items)){ %>
 <!-- <form action="/delete" method="POST"> -->
             <div class="flex  items-center justify-between my-8">
-                <!-- <img class="w-24" src="/img/<%= burger.item.image %>" alt=""> -->
+                <img class="w-24" src="/img/<%= burger.item.image %>" alt="">
                 <div class="flex flex-col ml-4">
                     <h1><%= burger.item.name %></h1>
                     <span class="text-gray-700 text-sm text-center "><%= burger.item.type %></span>
