@@ -2,15 +2,16 @@
     <div class="container mx-auto flex items-center  justify-between">
         <div class="w-1/2">
             <h6 class="text-2xl"><em>Hey!</em></h6>
-            <h1 class="text-xl md:text-4xl  font-bold">Welcome to the world of burgers!</h1>
-            <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary ">Order Now</button>
+            <h1 class="text-xl pb-5 md:text-4xl  font-bold">Welcome to the world of burgers!</h1>
+            <!-- <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary ">Order Now</button> -->
+            <a href="#menu" class=" px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary ">Order Now</a>
         </div>
         <div class="w-1/2 flex items-center justify-center">
             <img src="img1/Burger1.png" alt="">
         </div>
     </div>
 </section>
-<section class="menu container mx-auto py-8 overflow-x-auto">
+<section class="menu container mx-auto py-8 overflow-x-auto" id="menu">
     <h1 class=" text-2xl md:text-5xl heading font-bold mb-8 text-center">Menu</h1>
     <h1 class=" text-xl md:hidden  heading font-bold mb-8 text-center">Burger</h1>  
     <% Burgers.forEach(function(burger){ %>
