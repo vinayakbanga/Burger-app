@@ -150,13 +150,74 @@ if(order){
 }
 
 //for admin
-let adminAreaPath= window.location.pathname
-// console.log(adminAreaPath);
-if(adminAreaPath.includes('admin')){
-  initAdmin(socket)
-  socket.emit('join','adminRoom')
-}
+// let adminAreaPath= window.location.pathname
+// // console.log(adminAreaPath);
+// if(adminAreaPath.includes('admin')){
+//   initAdmin(socket)
+//   socket.emit('join','adminRoom')
+// }
+// initAdmin(socket)
 
+        // Make sure this code is adapted to work without import statements
+        // and in a browser context
+
+        const orderTableBody = document.querySelector('#orderTableBody');
+        let orders = [];
+        let markup;
+
+        axios.get('/admin/orders', {
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        }).then(res => {
+            orders = res.data;
+            markup = generateMarkup(orders);
+            orderTableBody.innerHTML = markup;
+        }).catch(err => {
+            console.error(err);
+        });
+
+        function renderItems(items) {
+            let parsedItems = Object.values(items);
+            return parsedItems.map(menuItem => `
+                <p>${menuItem.item.name} - ${menuItem.qty} pcs</p>
+            `).join('');
+        }
+
+        function generateMarkup(orders) {
+            return orders.map(order => `
+                <tr>
+                    <td class="border px-4 py-2 text-green-900">
+                        <p>${order._id}</p>
+                        <div>${renderItems(order.items)}</div>
+                    </td>
+                    <td class="border px-4 py-2">${order.customerId.name}</td>
+                    <td class="border px-4 py-2">${order.address}</td>
+                    <td class="border px-4 py-2">${order.status}</td>
+                    <td class="border px-4 py-2">
+                        ${moment(order.createdAt).format('hh:mm A')}
+                    </td>
+                    <td class="border px-4 py-2">
+                        ${order.paymentStatus ? 'Paid' : 'Not Paid'}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Socket initialization
+         socket = io();
+        socket.on('orderPlaced', (newOrder) => {
+            new Noty({
+                type: 'success',
+                timeout: 1000,
+                text: 'New order!',
+                progressBar: false,
+            }).show();
+            orders.unshift(newOrder);
+            orderTableBody.innerHTML = '';
+            orderTableBody.innerHTML = generateMarkup(orders);
+        });
+   
 
 socket.on('orderUpdated',(data)=>{
   const updatedOrder ={ ...order}
